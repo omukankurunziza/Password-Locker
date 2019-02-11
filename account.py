@@ -1,6 +1,6 @@
 class Account:
     """
-    Class that generates new instances of account.
+    Class that generates new instances of users.
     """
 
     account_list = [] # Empty account list
@@ -11,5 +11,4 @@ class Account:
 
         self.account_name = account_name
         self.user_name = user_name
-        self.phone_number = number
         self.password = password
