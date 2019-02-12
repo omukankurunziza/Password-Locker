@@ -10,7 +10,7 @@ Mukankurunziza Opportunee
 
 This is a password locker application where user can create many accounts,save them ,delete any account he or she doesn't want and he or she can see all accounts he or she was created.
 
-## Link to site to github
+## Link to live site on GitHub
 
 https://github.com/omukankurunziza/Password-Locker
 
