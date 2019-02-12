@@ -38,14 +38,20 @@ class Account:
         return cls.account_list
 
     def create_account(account_name,user_name,password):
-    '''
-    Function to create a new account
-    '''
-    new_account = Account(account_name,user_name,password)
-    return new_account
+        '''
+        Function to create a new account
+        '''
+        new_account = Account(account_name,user_name,password)
+        return new_account
 
     def save_accounts(account):
-    '''
-    Function to save account
-    '''
-    account.save_account()
+        '''
+        Function to save account
+        '''
+        account.save_account()
+
+    def del_ account( account):
+        '''
+        Function to delete a  account
+        '''
+         account.delete_ account()
