@@ -65,6 +65,22 @@ class TestCredentials(unittest.TestCase):
 
 
 
+    def test_find_credentials_by_credentials_name(self):
+        '''
+        test to check if we can find an credential by credentials_name and display information
+        '''
+
+
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new account
+        test_credentials.save_credentials()
+
+
+        found_credentials = Credentials.find_by_name("Mukankurunziza")
+
+
+        self.assertEqual(found_credentials.password,test_credentials.password)  
+
 
 
 
