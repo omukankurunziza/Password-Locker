@@ -55,3 +55,9 @@ class Account:
         Function to delete a  account
         '''
          account.delete_ account()
+
+    def find_account(account_name):
+        '''
+        Function that finds a account by account_name and returns the account
+        '''
+        return Account.find_by_account_name(account_name)
