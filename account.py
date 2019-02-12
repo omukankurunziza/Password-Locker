@@ -43,3 +43,9 @@ class Account:
     '''
     new_account = Account(account_name,user_name,password)
     return new_account
+
+    def save_accounts(account):
+    '''
+    Function to save account
+    '''
+    account.save_account()
