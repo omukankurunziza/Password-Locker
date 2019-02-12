@@ -64,6 +64,16 @@ from credentials import Credentials
         '''
         Function to delete a credential
         '''
-        credentials.delete_credentials()    
+        credentials.delete_credentials()  
+
+    
+    def find_credentials(name):
+        '''
+        Function that finds a credential by nane and returns the credential
+        '''
+        return Credentials.find_by_name(name)    
+
+
+
 
 
