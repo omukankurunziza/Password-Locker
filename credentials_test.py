@@ -26,11 +26,22 @@ class TestCredentials(unittest.TestCase):
     
     def test_save_credentials(self):
         '''
-        test_save_account test case to test if the account object is saved into
-         the account list
+        test_save credentials test case to test if thecredentials object is saved into
+         the credentials list
         '''
         self.new_credentials.save_credentials() # saving the new credentials
         self.assertEqual(len(Credentials.credentials_list),1)  
+
+
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            Credentials.credentials_list = []    
+
+
+
+
 
 
 if __name__ == '__main__':
