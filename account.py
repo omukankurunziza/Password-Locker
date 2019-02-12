@@ -61,3 +61,9 @@ class Account:
         Function that finds a account by account_name and returns the account
         '''
         return Account.find_by_account_name(account_name)
+
+    def check_existing_accounts(account_name):
+        '''
+        Function that check if a account exists with that account_name and return a Boolean
+        '''
+        return Account.account_exist(account_name)
