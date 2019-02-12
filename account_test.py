@@ -85,7 +85,7 @@ class TestAccount(unittest.TestCase):
         test_account = Account("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new account
         test_account.save_account()
 
-        found_account = Account.find_by_account_name("Mukankurunziza")
+        found_account = Account.find_by_name("Mukankurunziza")
 
         self.assertEqual(found_account.user_name,test_account.user_name)
 
@@ -110,10 +110,10 @@ class TestAccount(unittest.TestCase):
         '''
 
         self.new_account.save_account()
-        test_account = Account() # new contact
-        test_account.save_account("Mukankurunziza","nshutioppo@yahoo.fr","rukundo")
+        test_account = Account("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new contact
+        test_account.save_account()
 
-        account_exists = Account.account_exist("Mukankurunziza")
+        account_exists = Account.accountt_exist("Mukankurunziza")
 
         self.assertTrue(account_exists)
 
@@ -132,6 +132,12 @@ class TestAccount(unittest.TestCase):
         return False
 
        
+    def test_display_all_accounts(self):
+        '''
+        method that returns a list of all accounts saved
+        '''
+
+        self.assertEqual(Account.display_accounts(),(Account.account_list)
 
 
 if __name__ == '__main__':
