@@ -72,7 +72,7 @@ class TestCredentials(unittest.TestCase):
 
 
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new account
+        test_credentials = Credentials("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new credential
         test_credentials.save_credentials()
 
 

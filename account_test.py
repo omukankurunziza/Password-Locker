@@ -87,7 +87,7 @@ class TestAccount(unittest.TestCase):
 
         found_account = Account.find_by_name("Mukankurunziza")
 
-        self.assertEqual(found_account.user_name,test_account.user_name)
+        self.assertEqual(found_account.password,test_account.password)
 
     @classmethod
     def find_by_account_name(cls,account_name):
@@ -113,12 +113,12 @@ class TestAccount(unittest.TestCase):
         test_account = Account("Mukankurunziza","nshutioppo@yahoo.fr","rukundo") # new contact
         test_account.save_account()
 
-        account_exists = Account.accountt_exist("Mukankurunziza")
+        account_exists = Account.accountt_exist("rukundo")
 
         self.assertTrue(account_exists)
 
     @classmethod
-    def account_exist(cls,account_name):
+    def account_exist(cls,name):
         '''
         Method that checks if a account exists from the account list.
         Args:
@@ -126,7 +126,7 @@ class TestAccount(unittest.TestCase):
             Boolean: True or false depending if the account exists
         '''
         for account in cls.account_list:
-            if account.account_name == account_name:
+            if account.account_name == name:
                     return True
 
         return False
@@ -140,5 +140,5 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(Account.display_accounts(),(Account.account_list)
 
 
-if __name__ ==  '__main__':
+if __name__ == '__main__':
     unittest.main()

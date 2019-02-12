@@ -2,6 +2,9 @@
 
 from account import Account
 
+from credentials import Credentials
+
+
     def create_account(account_name,user_name,password):
         '''
         Function to create a new account
@@ -38,3 +41,13 @@ from account import Account
         Function that returns all the saved accounts
         '''
         return Account.display_accounts()
+
+        #....................credentials............
+
+    
+    def create_credentials(credentials_name,usr_name,password):
+        '''
+        Function to create a new credential
+        '''
+        new_credentials = Credentials(credentials_name,usr_name,password)
+        return new_credentials
