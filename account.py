@@ -36,3 +36,10 @@ class Account:
         method that returns the account list
         '''
         return cls.account_list
+
+    def create_account(account_name,user_name,password):
+    '''
+    Function to create a new account
+    '''
+    new_account = Account(account_name,user_name,password)
+    return new_account
