@@ -81,6 +81,12 @@ from credentials import Credentials
         return Credentials.credentials_exist(name)    
 
 
+    def display_credentials():  
+        '''
+        Function that returns all the saved credentials
+        '''
+        return Credentials.display_credentials() 
+
 
 
 
