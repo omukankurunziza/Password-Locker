@@ -71,7 +71,15 @@ from credentials import Credentials
         '''
         Function that finds a credential by nane and returns the credential
         '''
-        return Credentials.find_by_name(name)    
+        return Credentials.find_by_name(name) 
+
+    
+    def check_existing_credentials(name):
+        '''
+        Function that check if an credential exists with that name and return a Boolean
+        '''
+        return Credentials.credentials_exist(name)    
+
 
 
 
