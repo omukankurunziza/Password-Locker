@@ -57,5 +57,13 @@ from credentials import Credentials
         '''
         Function to save credential
         '''
-        credentials.save_credentials()    
+        credentials.save_credentials()  
+
+    
+    def del_credentials(credentials):
+        '''
+        Function to delete a credential
+        '''
+        credentials.delete_credentials()    
+
 
