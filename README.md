@@ -8,11 +8,15 @@ Mukankurunziza Opportunee
 
 ## Description
 
-This is a password locker application where user can create many accounts,save them ,delete any account he or she doesn't want and he or she can see all accounts he or she was created.
+Password Locker is a terminal run python application that allows users to store details i.e. usernames and passwords of their various accounts.
 
-## Link to live site on GitHub
+#User Stories These are the behaviours that the application implements for use by a user.
 
-https://github.com/omukankurunziza/Password-Locker
+As a user I would like:
+
+- To create an account with my details - log in and password
+- Store my existing login credentials
+- Generate a password for a new credential/account
 
 ## BDD
 
@@ -26,6 +30,24 @@ A user should have the option of putting in a password that he want to use for t
 
 A user should delete a credentials account that he is no longer need in the application.
 
+## SetUp / Installation Requirements
+
+Prerequisites python3.6 Good internet connection For windows users: GitBash For linux/ubuntu users : Git
+
+### Cloning
+
+in your terminal: \$ git clone https://github.com/omukankurunziza/Password-Locker
+
+\$ cd Python-Password-Locker
+
+## Running the Application
+
+To run the application, in your terminal: \$ ./run.py
+
+## Testing the Application
+
+To run the tests for the class file and check if it functions well: \$ python3.6 credentials_test.py
+
 ## Technologies used
 
 Python
@@ -37,5 +59,6 @@ nshutioppo1987@gmail.com tel:+250785073251
 
 whatsapp : +250785073251
 
-License
+## License
+
 MIT Copyright (c) 2019 Mukankurunziza Opportunee
