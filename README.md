@@ -50,7 +50,7 @@ To run the tests for the class file and check if it functions well: \$ python3.6
 
 ## Technologies used
 
-Python
+Python3.6
 
 ## Support and contact details
 
