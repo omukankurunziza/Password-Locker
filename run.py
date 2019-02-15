@@ -1,181 +1,143 @@
-#! /usr/bin/env python3
-import pyperclip
-from account import User
-from account import Credential
+import random
+from user import User
+from credentials import Credential
 
-
-def create_user(fname, lname, password):
-    '''
-    Function to create a new user account
-    '''
-    new_user = User(fname, lname, password)
-    new_user.save_user()
+def create_user_account(user_name,pass_word):
+    """
+    Function to create a new account
+    """
+    new_user = User(user_name,pass_word)
     return new_user
 
-
-def save_user(user):
-    '''
-    Function to save a new user account
-    '''
-    User.save_user(user)
-
-def verify_user(first_name, password):
-    '''
-    Function that verifies the existance of the user before creating credentials
-    '''
-    checking_user = Credential.check_user(first_name, password)
-
-    return checking_user
-
-
-def generate_password():
-    '''
-    Function to generate a password automatically
-    '''
-    password_generate = Credential.generate_password()
-    return password_generate
-
-
-def create_credential(user_name, site_name, account_name, password):
-    '''
+def create_credentials(view_password,account,login_name,pass_word):
+    """
     Function to create a new credential
-    '''
-    new_credential = Credential(user_name, site_name, account_name, password)
-
+    """
+    new_credential = Credential(view_password,account,login_name,pass_word)
     return new_credential
 
+def save_user_account(user):
+    """
+    Function to save user account
+    """
+    user.save_user()
 
-def save_credential(credential):
-    '''
-    Function to save a newly created credential
-    '''
+def save_credentials(credential):
+    """
+    Function to save credentials
+    """
+    credential.save_credential()
 
-    Credential.save_credentials(credential)
+def check_existing_users(characters):
+    """
+    Function that checks if a user exists with those characters and retuen a boolean
+    """
+    return User.user_exist(characters)
 
-
-def display_credentials(user_name):
-    '''
-    Function to display credentials saved by a user
-    '''
-    return Credential.display_credentials(user_name)
-
-
-def copy_credential(site_name):
-    '''
-    Function to copy a credentials details to the clipboard
-    '''
-    return Credential.copy_credential(site_name)
-
+def display_credentials():
+     """
+     Function that returns the credentials list
+     """
+     return Credential.display_credentials()
 
 def main():
-    print(' ')
-    print('Hello! Welcome to Password Locker.')
+    print("Hello! Welcome to the Password Locker. What is your name?")
+    u_name = input()
+    print("\n")
+    print(f"Hello {u_name}.what would you like to do?")
     while True:
-        print(' ')
-        print("-"*100)
-        print(
-            'Use these codes to navigate: \n ca-Create an Account \n li-Log In \n ex-Exit')
-        short_code = input('Enter a choice: ').lower().strip()
-        if short_code == 'ex':
-            break
+        print("\nUse these short codes below:")
+        print("-" * 20)
+        print("\n ca - create an account, cc - create credentials, gp - generate password, cp - create own password, ex - exit password locker, dc - display credentials")
+        short_code = input().lower()
 
-        elif short_code == 'ca':
-            print("-"*100)
-            print(' ')
-            print('To create a new account:')
-            first_name = input('Enter your first name - ').strip()
-            last_name = input('Enter your last name - ').strip()
-            password = input('Enter your password - ').strip()
-            create_user(first_name, last_name, password)
-            print(" ")
-            print(
-                f'New Account Created for: {first_name} {last_name} using password: {password}')
-        elif short_code == 'li':
-            print("-"*100)
-            print(' ')
-            print('To login, enter your account details:')
-            user_name = input('Enter your first name - ').strip()
-            password = str(input('Enter your password - '))
-            user_exists = verify_user(user_name, password)
-            if user_exists == user_name:
-                print(" ")
-                print(
-                    f'Welcome {user_name}. Please choose an option to continue.')
-                print(' ')
-                while True:
+        if short_code == 'ca':
+            print("New account")
+            print("-" * 10)
 
-                    print("-"*100)
-                    print(
-                        'Navigation codes: \n cc-Create a Credential \n dc-Display Credentials \n copy-Copy Password \n ex-Exit')
-                    short_code = input('Enter a choice: ').lower().strip()
-                    print("-"*100)
-                    if short_code == 'ex':
-                        print(" ")
-                        print(f'Goodbye {user_name}')
-                        break
-                    elif short_code == 'cc':
-                        print(' ')
-                        print('Enter your credential details:')
-                        site_name = input('Enter the site\'s name- ').strip()
-                        account_name = input(
-                            'Enter your account\'s name - ').strip()
-                        while True:
-                            print(' ')
-                            print("-"*100)
-                            print(
-                                'Please choose an option for entering a password: \n ep-enter existing password \n gp-generate a password \n ex-exit')
-                            psw_choice = input(
-                                'Enter an option: ').lower().strip()
-                            print("-"*100)
-                            if psw_choice == 'ep':
-                                print(" ")
-                                password = input(
-                                    'Enter your password: ').strip()
-                                break
-                            elif psw_choice == 'gp':
-                                password = generate_password()
-                                break
-                            elif psw_choice == 'ex':
-                                break
-                            else:
-                                print('Oops! Wrong option entered. Try again.')
-                        save_credential(create_credential(
-                            user_name, site_name, account_name, password))
-                        print(' ')
-                        print(
-                            f'Credential Created: Site Name: {site_name} - Account Name: {account_name} - Password: {password}')
-                        print(' ')
-                    elif short_code == 'dc':
-                        print(' ')
-                        if display_credentials(user_name):
+            print("\nEnter your user name")
+            print("-"*15)
+            user_name = input()
 
-                            print('Here is a list of all your credentials')
-                            print(' ')
-                            for credential in display_credentials(user_name):
-                                print(
-                                    f'Site Name: {credential.site_name} - Account Name: {credential.account_name} - Password: {credential.password}')
-                            print(' ')
-                        else:
-                            print(' ')
-                            print("You don't seem to have any credentials saved yet")
-                            print(' ')
-                    elif short_code == 'copy':
-                        print(' ')
-                        chosen_site = input(
-                            'Enter the site name for the credential password to copy: ')
-                        copy_credential(chosen_site)
-                        print('')
-                    else:
-                        print('Try again.')
+            print("\nEnter a password")
+            print("-"*15)
+            pass_word = input()
+
+            save_user_account(create_user_account(user_name,pass_word))# create and save new account.
+
+            print("\n")
+            print(f"New Account **{user_name}** created.\n")
+
+        elif short_code == "cc":
+            print("\nLogin to your account")
+            print("-"*15)
+            print("\nUsername?")
+            print("-" * 10)
+            username_input = input()
+            print("\nPassword?")
+            print("-"*10)
+            user_password_input = input()
+            view_password = user_password_input
+            if check_existing_users(user_password_input):
+                print("\nWelcome back!")
+                print("New Credential")
+                print("-" *10)
+
+                print("\nWhich account do the credentials belong to?")
+                print("-"*40)
+                account = input()
+
+                print(f"\nWhat's your login name for the {account} account?")
+                print("-"*40)
+                login_name = input()
+
+                print("\nChoose:")
+                print("-"*10)
+                print("'gp' - program to generate your password for you, 'cp' - create your own password")
+                password_creation_input = input()
+                if password_creation_input == "cp":
+                    print("\nEnter your password")
+                    print("-"*10)
+                    pass_word = input()
+                elif password_creation_input == "gp":
+                    chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                    pass_word = "".join(random.choice(chars) for _ in range(8))
+                    print(f"\nYour password is: **{pass_word}**")
+
+                save_credentials(create_credentials(view_password,account,login_name,pass_word))
+                print("\n")
+                print(f"New credentials **{account}**, **{login_name}**, **{pass_word}** created")
 
             else:
-                print(' ')
-                print('Oops!Try again or Create an Account.')
+                print("Wrong password or username. Please Try again.\n Username?")
+                print("-"*20)
+                username_input = input()
+                print("\nPassword?")
+                print("-"*20)
+                password_input = input()
+                if check_existing_users(user_password_input):
+                    print("\nWelcome back!")
+                else:
+                    print("You don't have an account.\n")
+
+        elif short_code == 'dc':
+            if display_credentials():
+                print("Here is a list of your credentials:")
+                print("-"*40)
+
+                for credential in display_credentials():
+                    print(f"\nAccount: {credential.account}\nLogin Name: {credential.login}\nAccount Password: {credential.password}")
+            else:
+                print("\n You don't seem to have any credentials saved yet")
+
+        elif short_code == 'ex':
+            print("-"*50)
+            print("Thank you for using Password Locker...")
+            print("-"*50)
+            break
 
         else:
-            print("-"*100)
-            print(' ')
-            print('Oops!Try again.')
+            print("Sorry, I didn't get that. Please use the short codes\n")
 
 
 if __name__ == '__main__':
